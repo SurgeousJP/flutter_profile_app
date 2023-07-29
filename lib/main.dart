@@ -6,8 +6,16 @@ void main() {
   ));
 }
 
-class NinjaCard extends StatelessWidget {
+class NinjaCard extends StatefulWidget {
   const NinjaCard({super.key});
+
+  @override
+  State<NinjaCard> createState() => _NinjaCardState();
+}
+
+class _NinjaCardState extends State<NinjaCard> {
+
+  int GanyuAffectionLvl = 1000;
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +26,15 @@ class NinjaCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[850],
         elevation: 0.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            GanyuAffectionLvl += 100;
+          });
+        },
+        backgroundColor: Colors.red[800],
+        child: Icon(Icons.add),
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
@@ -59,7 +76,7 @@ class NinjaCard extends StatelessWidget {
               height: 30.0,
             ),
             Text(
-              'NINJA LVL',
+              'AFFECTION LVL',
               style: TextStyle(
                   color: Colors.grey,
                   letterSpacing: 2.0,
@@ -70,7 +87,7 @@ class NinjaCard extends StatelessWidget {
               height: 10.0,
             ),
             Text(
-              '10',
+              '$GanyuAffectionLvl',
               style: TextStyle(
                   color: Colors.amber[200],
                   letterSpacing: 2.0,
@@ -105,5 +122,7 @@ class NinjaCard extends StatelessWidget {
     );
   }
 }
+
+
 
 
